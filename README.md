@@ -1,76 +1,14 @@
-# System.Linq.Dynamic.Core
-This is a **.NET Core / Standard port** of the Microsoft assembly for the .Net 4.0 Dynamic language functionality.
+# DynamicExpressionParser
+This library helps parsing code as dynamic expressions. This library has been forked and you can read more about it below.
 
-# Overview
-With this library it's possible to write Dynamic LINQ queries (string based) on an `IQueryable`:
-``` c#
-var query = db.Customers
-    .Where("City == @0 and Orders.Count >= @1", "London", 10)
-    .OrderBy("CompanyName")
-    .Select("new(CompanyName as Name, Phone)");
-```
+You can also find some documentation on the forked repository. More documentation will be added with corresponding changes to this repository.
 
-# How to use
-There are several documentation resources:
-- [Getting Started](https://dynamic-linq.net/overview) : a website to get started with basic and advanced usage.
-- [API Documentation][doc-api] : a low-level API description website with some code samples
+Please note that this library is not aimed towards using dynamic expressions at database queries. Initial motivation is to use it in soon to be revitalized project called WPFix, which is not related to databases at all. If you are planning to use it for queries, I strongly suggest looking at the forked repository instead since it has extensive tests for database queries.
 
-# Info
-| | |
-| --- | --- |
-| ***Project*** | &nbsp; |
-| &nbsp;&nbsp;**Chat** | [![Gitter](https://img.shields.io/gitter/room/system-linq-dynamic-core/Lobby.svg)](https://gitter.im/system-linq-dynamic-core/Lobby) |
-| &nbsp;&nbsp;**Issues** | [![GitHub issues](https://img.shields.io/github/issues/StefH/System.Linq.Dynamic.Core.svg)](https://github.com/StefH/System.Linq.Dynamic.Core/issues) |
-| | |
-| ***Quality*** | &nbsp; |
-| &nbsp;&nbsp;**Build** | [![Build Status Azure](https://stef.visualstudio.com/System.Linq.Dynamic.Core/_apis/build/status/StefH.System.Linq.Dynamic.Core)](https://stef.visualstudio.com/System.Linq.Dynamic.Core/_build/latest?definitionId=12) |
-| &nbsp;&nbsp;**Quality** | [![Sonar Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=system.linq.dynamic.core&metric=alert_status)](https://sonarcloud.io/project/issues?id=system.linq.dynamic.core) [![CodeFactor](https://www.codefactor.io/repository/github/stefh/system.linq.dynamic.core/badge)](https://www.codefactor.io/repository/github/stefh/system.linq.dynamic.core)
-| &nbsp;&nbsp;**Sonar** | [![Sonar Bugs](https://sonarcloud.io/api/project_badges/measure?project=system.linq.dynamic.core&metric=bugs)](https://sonarcloud.io/project/issues?id=system.linq.dynamic.core&resolved=false&types=BUG) [![Sonar Code Smells](https://sonarcloud.io/api/project_badges/measure?project=system.linq.dynamic.core&metric=code_smells)](https://sonarcloud.io/project/issues?id=system.linq.dynamic.core&resolved=false&types=CODE_SMELL)|
-| &nbsp;&nbsp;**Coverage** | [![codecov](https://codecov.io/gh/StefH/System.Linq.Dynamic.Core/branch/master/graph/badge.svg)](https://codecov.io/gh/StefH/System.Linq.Dynamic.Core) [![Coverage Status](https://coveralls.io/repos/github/StefH/System.Linq.Dynamic.Core/badge.svg?branch=master)](https://coveralls.io/github/StefH/System.Linq.Dynamic.Core?branch=master)|
-| |
-| ***NuGet*** | &nbsp; |
-| &nbsp;&nbsp;**System.Linq.Dynamic.Core** | [![NuGet](https://buildstats.info/nuget/System.Linq.Dynamic.Core)](https://www.nuget.org/packages/System.Linq.Dynamic.Core) |
-| &nbsp;&nbsp;**EntityFramework.DynamicLinq** | [![NuGet](https://buildstats.info/nuget/EntityFramework.DynamicLinq)](https://www.nuget.org/packages/EntityFramework.DynamicLinq) |
-| &nbsp;&nbsp;**Microsoft.EntityFrameworkCore.DynamicLinq** | [![NuGet](https://buildstats.info/nuget/Microsoft.EntityFrameworkCore.DynamicLinq)](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.DynamicLinq) |
-| &nbsp;&nbsp;**Z.EntityFramework.Classic.DynamicLinq** | [![NuGet](https://buildstats.info/nuget/Z.EntityFramework.Classic.DynamicLinq)](https://www.nuget.org/packages/Z.EntityFramework.Classic.DynamicLinq) |
-| ***MyGet (preview)*** | &nbsp; |
-| &nbsp;&nbsp;**System.Linq.Dynamic.Core** | [![MyGet](https://buildstats.info/myget/system-linq-dynamic-core/System.Linq.Dynamic.Core)](https://www.myget.org/feed/system-linq-dynamic-core/package/nuget/System.Linq.Dynamic.Core) |
-| &nbsp;&nbsp;**EntityFramework.DynamicLinq** | [![MyGet](https://buildstats.info/myget/system-linq-dynamic-core/EntityFramework.DynamicLinq)](https://www.myget.org/feed/system-linq-dynamic-core/package/nuget/EntityFramework.DynamicLinq) |
-| &nbsp;&nbsp;**Microsoft.EntityFrameworkCore.DynamicLinq** | [![MyGet](https://buildstats.info/myget/system-linq-dynamic-core/Microsoft.EntityFrameworkCore.DynamicLinq)](https://www.myget.org/feed/system-linq-dynamic-core/package/nuget/Microsoft.EntityFrameworkCore.DynamicLinq) |
-| &nbsp;&nbsp;**Z.EntityFramework.Classic.DynamicLinq** | [![MyGet](https://buildstats.info/myget/system-linq-dynamic-core/Z.EntityFramework.Classic.DynamicLinq)](https://www.myget.org/feed/system-linq-dynamic-core/package/nuget/Z.EntityFramework.Classic.DynamicLinq) |
+## Fork history
+I had an old open source project called WPFix which used a sample code named Dynamic.cs provided by Microsoft back in 2008. If you are interested, it should be available [here](https://docs.microsoft.com/en-us/previous-versions/bb894665(v=msdn.10)?redirectedfrom=MSDN).
 
-# Development Details
+I recently decided to bring my old open source projects WPFix and Geostructor back to life after more than 10 years. Hopefully, they should be on github soon. Key part of WPFix was parsing code at runtime. At the time, using Dynamic.cs was extremely useful but it felt a bit awkward. After all these years, I looked for a better alternative but unfortunately I haven't found anything to my liking. However, I found [zzzprojects/System.Linq.Dynamic.Core](https://github.com/zzzprojects/System.Linq.Dynamic.Core) which was at least working on modern .NET frameworks and had a decent project structure. It had a few conflicting changes with what I have done with Dynamic.cs on WPFix. Since it also mainly focused on database queries and was quite a large repository, I've decided to fork it. To minimize confusion and convey its main goal, I am going to rename this fork as DynamicExpressionParser. I plan to keep the namespace for now.
 
-## Frameworks
-The following frameworks are supported:
-- net35, net40, net45, net46 and up
-- netstandard1.3 & netstandard2.0
-- uap10.0 (UAP 10.0.14393.0)
-
-## Fork details
-This fork takes the basic library to a new level. Contains XML Documentation and examples on how to use it. Also adds unit testing to help ensure that it works properly.
-
-Some background:
-I forked from https://github.com/NArnott/System.Linq.Dynamic and added some more functionality there.<br>My fork is still visible on github [https://github.com/StefH/System.Linq.Dynamic], however I decided to start a new project + nuget to avoid confusion and create the project according to the new VS2017 + .NET Core rules / standards.
-
-However, currently there are multiple nuget packages and projects available:
-
-| Project | NuGet | Author | Comment |
-| ------- | ----- | ------ | ------- |
-| [kahanu/System.Linq.Dynamic][2a] | [System.Linq.Dynamic][2b] | @kahanu | - |
-| [kavun/System.Linq.Dynamic.3.5][3a] | [System.Linq.Dynamic.3.5/][3b] | @kavun | only 3.5 and VB.NET |
-| [NArnott/System.Linq.Dynamic][4a] | [System.Linq.Dynamic.Library][4b]  | @NArnott | removed from github + nuget ? |
-| [dynamiclinq.codeplex][5a] | - | dialectsoftware | - |
-| [dynamic-linq][6a] | - | scottgu | - |
-
-[2a]: https://github.com/kahanu/System.Linq.Dynamic
-[2b]: https://www.nuget.org/packages/System.Linq.Dynamic
-[3a]: https://github.com/kavun/System.Linq.Dynamic.3.5
-[3b]: https://www.nuget.org/packages/System.Linq.Dynamic.3.5/
-[4a]: https://github.com/NArnott/System.Linq.Dynamic
-[4b]: https://www.nuget.org/packages/System.Linq.Dynamic.Library
-[5a]: https://dynamiclinq.codeplex.com/
-[6a]: http://weblogs.asp.net/scottgu/dynamic-linq-part-1-using-the-linq-dynamic-query-library
-
-[doc-api]: http://zzzprojects.github.io/System.Linq.Dynamic.Core
-[doc-wiki]: https://github.com/zzzprojects/System.Linq.Dynamic.Core/wiki/Dynamic-Expressions
+## License details
+There are multiple license files in this repository. [LICENSE](LICENSE) file is there for the contributions in this fork. LICENSE file from the forked repository has been renamed to [LICENSE Stef Heyenrath](LICENSE Stef Heyenrath). I have also added back the license for the Microsoft code samples in [LICENSE Microsoft](LICENSE Microsoft). Microsoft's copyright notice has been removed at the forked project. Since their original fork has been removed, I couldn't find any other copyright notices. I suggest looking at *Dynamic.cs* from the original Microsoft code samples to be sure about the origin of a code file.

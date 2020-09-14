@@ -1,12 +1,23 @@
 {
 	"version": "0.2.0",
 	"configurations": [
+
 		{
 			"name": ".NET Core Launch (tests)",
 			"type": "coreclr",
 			"request": "launch",
 			"preLaunchTask": "build",
 			"program": "${workspaceRoot}/test/System.Linq.Dynamic.Core.Tests/bin/Debug/test",
+			"args": [],
+			"cwd": "${workspaceRoot}",
+			"stopAtEntry": false
+		},
+		{
+			"name": "Launch Geostructor",
+			"type": "coreclr",
+			"request": "launch",
+			"preLaunchTask": "build",
+			"program": "${workspaceRoot}/../geostructor/apps/win/Geostructor.WinApp/bin/Debug/net5.0-windows/Geostructor.WinApp.dll",
 			"args": [],
 			"cwd": "${workspaceRoot}",
 			"stopAtEntry": false

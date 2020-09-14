@@ -1,3 +1,0 @@
-1. choco install docfx -y
-
-2. Run powershell script: build-docs.ps1 -serve
